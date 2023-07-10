@@ -50,52 +50,66 @@ $admin_user=session::get('admin_User');
         </div>
       </div>
     </li>
-    <?php 
-    $check = Session::get('level');
-    if($check== '0'){ 
-     ?>
-     <li class="nav-item">
-      <a class="nav-link" href="listadmin.php">
-        <i class="fas fa-users-cog"></i>
-        <span>Danh Sách Nhân Sự</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-plus"></i>
-          <span>Quản Lý Sản Phẩm</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Thông Tin :</h6>
-            <a class="collapse-item" href="brand.php">Thương Hiệu</a>
-            <a class="collapse-item" href="product.php">Danh Sách Sản Phẩm</a>
-            <a class="collapse-item" href="category.php">Danh Mục Sản Phẩm</a>
-            <a class="collapse-item" href="discount.php">Chương Trình Khuyến Mãi</a>
-          </div>
-        </li>
-        <?php
-      }else{
-        ?> 
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-            <i class="fas fa-plus"></i>
-            <span>Quản lý</span>
-          </a>
-          <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-              <h6 class="collapse-header">Thông Tin :</h6>
-              <a class="collapse-item" href="brand.php">Thương Hiệu</a>
-              <a class="collapse-item" href="product.php">Danh Sách Sản Phẩm</a>
-              <a class="collapse-item" href="category.php">Danh Mục Sản Phẩm</a>
-              <a class="collapse-item" href="discount.php">Chương Trình Khuyến Mãi</a>
-            </div>
-          </li>
-
-        <?php }   ?> 
-
-
-
-
+<?php
+$check = Session::get('level');
+if ($check == '0') {
+  ?>
+  <li class="nav-item">
+    <a class="nav-link" href="listadmin.php">
+      <i class="fas fa-users-cog"></i>
+      <span>Danh Sách Nhân Sự</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
+      aria-controls="collapsePages">
+      <i class="fas fa-plus"></i>
+      <span>Quản Lý Sản Phẩm</span>
+    </a>
+    <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Thông Tin :</h6>
+        <a class="collapse-item" href="brand.php">Thương Hiệu</a>
+        <a class="collapse-item" href="product.php">Danh Sách Sản Phẩm</a>
+        <a class="collapse-item" href="category.php">Danh Mục Sản Phẩm</a>
+        <a class="collapse-item" href="discount.php">Chương Trình Khuyến Mãi</a>
+      </div>
+    </div>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="customer.php">
+      <i class="fas fa-users"></i>
+      <span>Quản Lý Khách Hàng</span>
+    </a>
+  </li>
+  <?php
+} else {
+  ?>
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
+      aria-controls="collapsePages">
+      <i class="fas fa-plus"></i>
+      <span>Quản lý</span>
+    </a>
+    <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Thông Tin :</h6>
+        <a class="collapse-item" href="brand.php">Thương Hiệu</a>
+        <a class="collapse-item" href="product.php">Danh Sách Sản Phẩm</a>
+        <a class="collapse-item" href="category.php">Danh Mục Sản Phẩm</a>
+        <a class="collapse-item" href="discount.php">Chương Trình Khuyến Mãi</a>
+      </div>
+    </div>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="customer.php">
+      <i class="fas fa-users"></i>
+      <span>Quản Lý Khách Hàng</span>
+    </a>
+  </li>
+  <?php
+}
+?>
 
         <!-- Nav Item - Utilities Collapse Menu -->
 <!-- <li class="nav-item">

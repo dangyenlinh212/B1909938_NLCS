@@ -56,7 +56,7 @@ ob_start();
                                 </div> -->
 
                                 <input type="text" name="namepro" placeholder="What do yo u need?">
-                                <button type="" class="site-btn">SEARCH</button>
+                                <button type="" class="site-btn">Tìm kiếm</button>
 
                             </form>
                     </div>

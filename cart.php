@@ -225,7 +225,7 @@
                             <h5>Mã khuyến mãi</h5>
                             <form action="" method="post">
                                 <input type="text" name="codediscount" placeholder="Nhập mã khuyến mãi">
-                                <button type="submit" name="discount" class="site-btn">APPLY</button>
+                                <button type="submit" name="discount" class="site-btn">ÁP DỤNG</button>
                                 <!-- <button type="submit" name="undiscount" class="site-btn">APPLY COUPON</button> -->
                             </form>
                         </div>
@@ -234,7 +234,7 @@
                 <div class="col-lg-6">
                     <form action="" method="post">
                     <div class="shoping__checkout">
-                        <h5>Cart Total</h5>
+                        <h5>Tổng cộng</h5>
                         <ul>
                             <li>Tạm tính <span><?php  
                                     
@@ -262,12 +262,12 @@
 
 
                                  ?>
-                                <button type="submit" name="undiscount" class="stylinggg">remove</button>
+                                <button type="submit" name="undiscount" class="stylinggg">Bỏ</button>
                                 <?php 
                                 } ?>
                             </li>
 
-                            <li>Total <span><?php  
+                            <li>Tổng <span><?php  
                                     
                                      $alltotal= ($sub_total - $a);
                                      echo '$'.$fm->format_currency($alltotal);
@@ -298,12 +298,12 @@
                             $qtt=Session::get("qtt");
                             if($qtt!='0'){
                          ?>
-                        <a href="checkout.php" class="primary-btn">CHECKOUT</a>
+                        <a href="checkout.php" class="primary-btn">XÁC NHẬN ĐẶT HÀNG</a>
                         <?php 
                         }else{
 
                          ?>
-                           <a href="index.php" class="primary-btn">CHECKOUT</a>
+                           <a href="index.php" class="primary-btn">XÁC NHẬN ĐẶT HÀNG</a>
                            <?php 
                               }
                                                 ?>

@@ -105,7 +105,7 @@ $buyer= Session::get('customer_user');
     <?php
                                 $check = Session::get('customer_login');
                                 if ($check == false) {
-                                    echo '<a href="login.php"><i class="fa fa-user"></i> Login</a>';
+                                    echo '<a href="login.php"><i class="fa fa-user"></i> Đăng nhập</a>';
                                 } else {
                                     $username = "";
                                     if (isset($_SESSION['customer_user'])) {

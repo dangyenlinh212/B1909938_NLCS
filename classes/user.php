@@ -47,23 +47,13 @@ class User
 			$alert = '<span class="text-danger">Vui lòng không để trống thông tin</span>';
 			return $alert;
 		} elseif (strlen($password) < 6) {
-			$alert = '<span class="text-danger">Mật khẩu phải trên 6 kí tự, vui lòng nhập lại</span>';
+			$alert = '<span class="text-danger">Mật khẩu phải chứa ít nhất 6 ký tự</span>';
 			return $alert;
 		} else {
-			$check = "SELECT * FROM tbl_customer ";
+			$check = "SELECT * FROM tbl_customer WHERE username = '$username' OR emailCus = '$email' OR phone = '$phone'";
 			$result_check = $this->db->select($check);
-			$data = mysqli_fetch_array($result_check);
-			$check_mail = $data['emailCus'];
-			$check_username = $data['username'];
-			$check_phone = $data['phone'];
-			if ($username == $check_username) {
-				$alert = '<span class="text-danger">Username Tồn Tại</span>';
-				return $alert;
-			} elseif ($email == $check_mail) {
-				$alert = '<span class="text-danger">Email Tồn Tại</span>';
-				return $alert;
-			} elseif ($phone == $check_phone) {
-				$alert = '<span class="text-danger">Phone Tồn Tại</span>';
+			if ($result_check && mysqli_num_rows($result_check) > 0) {
+				$alert = '<span class="text-danger">Username, Email, hoặc Phone đã tồn tại</span>';
 				return $alert;
 			}
 			if ($password != $repeatpassword) {
@@ -94,20 +84,19 @@ class User
 		$password = mysqli_real_escape_string($this->db->link, md5($data['password']));
 		$check = "SELECT * FROM tbl_customer WHERE (username= '$username' OR emailCus= '$username' OR phone= '$username')  AND password ='$password' limit 1";
 		$result_check = $this->db->select($check);
-		if ($result_check) {
+
+		if ($result_check && mysqli_num_rows($result_check) > 0) {
 			$value = $result_check->fetch_assoc();
 			Session::set('customer_login', true);
 			Session::set('customer_user', $value['username']);
 			Session::set('customer_name', $value['nameCus']);
 			header('location:index.php');
-
 		} else {
-			$alert = '<span class="text-danger" > Sai tài khoản hoặc mật khẩu</span>';
+			$alert = '<span class="text-danger">Sai tài khoản hoặc mật khẩu</span>';
 			return $alert;
 		}
-
-
 	}
+
 
 	public function Get_User($username)
 	{
@@ -117,6 +106,13 @@ class User
 		$result_check = $this->db->select($query);
 		return $result_check;
 	}
+	public function Get_UserList()
+	{
+		$query = "SELECT * FROM tbl_customer";
+		$result = $this->db->select($query);
+		return $result;
+	}
+
 
 	public function Update_Customer($data, $userr)
 	{

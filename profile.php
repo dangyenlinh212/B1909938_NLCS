@@ -122,11 +122,6 @@ input[type=password], select {
                         <td id="td1">Tài khoản </td>
                         <td>:</td>
                         <td><input  type="texts" name="" disabled value="<?php echo $username; ?>"></td>
-                        
-                       
-                     
-                        
-                        
                     </tr>
                     <tr>
                         <td id="td1">Tên khách hàng </td>

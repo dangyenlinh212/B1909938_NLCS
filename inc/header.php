@@ -40,12 +40,11 @@ $buyer= Session::get('customer_user');
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
     <link rel="stylesheet" href="css/nice-select.css" type="text/css">
@@ -53,6 +52,18 @@ $buyer= Session::get('customer_user');
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <style>
+        .dropdown .btn {
+            font-size: 14px; /* Adjust the font size as needed */
+        }
+        .dropdown:hover>.dropdown-menu {
+            display: block;
+        }
+        .dropdown>.dropdown-toggle:active {
+            /*Without this, clicking will make it sticky*/
+            pointer-events: none;   
+        }
+    </style>
 </head>
 
 <body>
@@ -60,8 +71,6 @@ $buyer= Session::get('customer_user');
     <div id="preloder">
         <div class="loader"></div>
     </div>
-
-   
     <header class="header">
         <div class="header__top">
             <div class="container">
@@ -93,17 +102,32 @@ $buyer= Session::get('customer_user');
                                   }
                              ?>             
                             <div class="header__top__right__auth">
-                                <?php 
-                                      $check = Session::get('customer_login');
-                                      if($check== false){
-                                          echo '<a href="login.php"><i class="fa fa-user"></i> Login</a>';
-                                        }else
-                                       {
+    <?php
+                                $check = Session::get('customer_login');
+                                if ($check == false) {
+                                    echo '<a href="login.php"><i class="fa fa-user"></i> Login</a>';
+                                } else {
+                                    $username = "";
+                                    if (isset($_SESSION['customer_user'])) {
+                                        $username = $_SESSION['customer_user'];
+                                    }
 
-                                           echo '<a href="?customer_user='.Session::get('customer_user').'"><i class="fa fa-user"></i>Logout</a></div>'; 
-                                          }
-                                   ?>
+                                    echo '
+                                    <div class="dropdown">
+                                        <button class="btn btn-lg dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa fa-user fa-lg"></i> Xin chào ' . $username . '
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="profile.php">Thông tin tài khoản</a>
+                                            <a class="dropdown-item" href="logout.php">Đăng xuất</a>
+                                        </div>
+                                    </div>';
+                                }
+                                ?>
                             </div>
+
+
+
                         </div>
                     </div>
                 </div>
@@ -161,3 +185,8 @@ $buyer= Session::get('customer_user');
             </div>
         </div>
     </header>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>

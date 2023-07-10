@@ -166,7 +166,7 @@ include 'inc/header.php';
                     ?>
                     <div class="col-lg-4 col-md-6">
                         <div class="checkout__order">
-                            <h4>Your Order</h4>
+                            <h4>Đơn đặt hàng của bạn</h4>
                             <div class="checkout__order__products">Sản phẩm <span>Total</span> </div>
                             <ul>
                                 <?php

@@ -78,7 +78,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])){
                             <input type="text" name="username" placeholder="Enter Username">
                         </div>
                         <div class="checkout__input">
-                            <p>Họ và tên<span>*</span></p>
+                            <p> họ và tên<span>*</span></p>
                             <input type="text" name="name" placeholder="Enter Name">
                         </div>
                         <div class="checkout__input">

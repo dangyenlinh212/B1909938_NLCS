@@ -94,17 +94,17 @@ span.psw {
 
     <label for="psw"><b>Mật khẩu</b></label>
     <input type="password" placeholder="Enter Password" name="password" required>
-    <?php
-    if (isset($loginCus)) {
-      echo $loginCus;
-    }
-    ?>
-    <button type="submit" name="login">Login</button>
+     <?php  
+          if(isset($loginCus)){
+                        echo $loginCus;
+                    }
+        ?>   
+        <button type="submit" name="login">Login</button>
     <label>
       <input type="checkbox" checked="checked" name="remember"> Lưu tài khoản
     </label>
   </div>
-</form>
+
   <!-- <div class="container" style="background-color:#f1f1f1">
     <button type="button" class="cancelbtn">Cancel</button>
     <span class="psw">Forgot <a href="#">password?</a></span>

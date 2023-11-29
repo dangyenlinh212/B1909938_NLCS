@@ -56,7 +56,7 @@ ob_start();
                                 </div> -->
 
                                 <input type="text" name="namepro" placeholder="What do yo u need?">
-                                <button type="" class="site-btn">Tìm kiếm</button>
+                                <button type="" class="site-btn">SEARCH</button>
 
                             </form>
                     </div>
@@ -65,8 +65,8 @@ ob_start();
                             <i class="fa fa-phone"></i>
                         </div>
                         <div class="hero__search__phone__text">
-                            <h5>+1900.9938</h5>
-                            <span>Hỗ trợ 24/7 </span>
+                            <h5>+84 11.188.888</h5>
+                            <span>Hổ trợ 24/7 </span>
                         </div>
                     </div>
                 </div>

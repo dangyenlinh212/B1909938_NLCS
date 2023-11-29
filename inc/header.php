@@ -1,32 +1,32 @@
 <?php
-    include 'lib/session.php';
-    session::init();
-     include_once ("lib/database.php");
-    include_once ("helpers/format.php");
-    Spl_autoload_register(function ($className){ 
-        include_once ("classes/".$className.".php");
-    });
-    $db=new database();
-    $fm=new format();
-    $ct=new cart();
-    $cat=new category();
-    $brand = new brand();
-    $pro=new product();
-    $city=new city();
-    $user=new User();
-    $bill=new bill();
+include 'lib/session.php';
+session::init();
+include_once("lib/database.php");
+include_once("helpers/format.php");
+Spl_autoload_register(function ($className) {
+    include_once("classes/" . $className . ".php");
+});
+$db = new database();
+$fm = new format();
+$ct = new cart();
+$cat = new category();
+$brand = new brand();
+$pro = new product();
+$city = new city();
+$user = new User();
+$bill = new bill();
 ?>
-<?php 
-$buyer= Session::get('customer_user');
- ?>
- <?php  
+<?php
+$buyer = Session::get('customer_user');
+?>
+<?php
 
-                if(isset($_GET['customer_user'])){
-                    $destroyCart = $ct->Del_cart_by_Session();
-                    Session::destroy();
-                }
+if (isset($_GET['customer_user'])) {
+    $destroyCart = $ct->Del_cart_by_Session();
+    Session::destroy();
+}
 
-            ?>
+?>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -36,15 +36,16 @@ $buyer= Session::get('customer_user');
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>SPORTS SHOP</title>
+    <title>LINH SHOP</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
-    
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
     <link rel="stylesheet" href="css/nice-select.css" type="text/css">
@@ -52,18 +53,6 @@ $buyer= Session::get('customer_user');
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    <style>
-        .dropdown .btn {
-            font-size: 14px; /* Adjust the font size as needed */
-        }
-        .dropdown:hover>.dropdown-menu {
-            display: block;
-        }
-        .dropdown>.dropdown-toggle:active {
-            /*Without this, clicking will make it sticky*/
-            pointer-events: none;   
-        }
-    </style>
 </head>
 
 <body>
@@ -71,6 +60,8 @@ $buyer= Session::get('customer_user');
     <div id="preloder">
         <div class="loader"></div>
     </div>
+
+
     <header class="header">
         <div class="header__top">
             <div class="container">
@@ -78,7 +69,7 @@ $buyer= Session::get('customer_user');
                     <div class="col-lg-6 col-md-6">
                         <div class="header__top__left">
                             <ul>
-                                <li><i class="fa fa-envelope"></i> contact@sportsshop.com</li>
+                                <li><i class="fa fa-envelope"></i> contact@linhshop.com</li>
                                 <li>Miễn phí giao hàng cho hóa đơn từ 99$</li>
                             </ul>
                         </div>
@@ -91,40 +82,122 @@ $buyer= Session::get('customer_user');
                                 <a href="#"><i class="fa fa-linkedin"></i></a>
                                 <a href="#"><i class="fa fa-pinterest-p"></i></a>
                             </div>
-                            <?php 
-                                    $check = Session::get('customer_login');
-                                    if($check== false){
+                            <?php
+                            $check = Session::get('customer_login');
+                            if ($check == false) {
+                                ?>
+
+                                <div class="header__top__right__social">
+                                    <a href="register.php"><i></i> Đăng ký</a>
+                                </div>
+                                <?php
+                            }
                             ?>
-                                          
-                                 <div class="header__top__right__social">
-                                     <a href="register.php"><i ></i> Đăng ký</a>
-                                 </div><?php 
-                                  }
-                             ?>             
+                            <!-- Trong phần header -->
                             <div class="header__top__right__auth">
-    <?php
+                                <?php
                                 $check = Session::get('customer_login');
                                 if ($check == false) {
-                                    echo '<a href="login.php"><i class="fa fa-user"></i> Đăng nhập</a>';
+                                    echo '<a href="login.php"><i class="fa fa-user"></i> Login</a>';
                                 } else {
-                                    $username = "";
-                                    if (isset($_SESSION['customer_user'])) {
-                                        $username = $_SESSION['customer_user'];
-                                    }
-
-                                    echo '
-                                    <div class="dropdown">
-                                        <button class="btn btn-lg dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fa fa-user fa-lg"></i> Xin chào ' . $username . '
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="profile.php">Thông tin tài khoản</a>
-                                            <a class="dropdown-item" href="logout.php">Đăng xuất</a>
-                                        </div>
-                                    </div>';
+                                    $username = Session::get('customer_user');
+                                    echo '<div class="header__top__right__account">';
+                                    echo '<span id="accountDropdownTrigger" class="greeting">Xin chào, <span class="username">' . $username . '</span>!</span>';
+                                    echo '<div id="accountDropdown" class="account-dropdown">';
+                                    echo '<ul>';
+                                    echo '<li><a href="profile.php">Thông tin tài khoản</a></li>';
+                                    echo '<li><a href="?customer_user=' . $username . '">Đăng xuất</a></li>';
+                                    echo '</ul>';
+                                    echo '</div>';
+                                    echo '</div>';
                                 }
                                 ?>
                             </div>
+
+                            <style>
+                                /* CSS inline để thêm vào trực tiếp dưới mã PHP */
+                                .greeting {
+                                    font-size: 18px;
+                                    /* Điều chỉnh kích thước chữ theo nhu cầu của bạn */
+                                    cursor: pointer;
+                                }
+
+                                .username {
+                                    color: red;
+                                }
+
+                                .account-dropdown {
+                                    display: none;
+                                    position: absolute;
+                                    top: 40px;
+                                    right: 0;
+                                    background-color: #fff;
+                                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                                    border: 1px solid #ddd;
+                                    border-radius: 4px;
+                                    padding: 8px;
+                                    z-index: 1;
+                                    min-width: 160px;
+                                    font-size: 14px;
+                                }
+
+                                .account-dropdown.show {
+                                    display: block;
+                                }
+
+                                .account-dropdown ul {
+                                    list-style: none;
+                                    padding: 0;
+                                    margin: 0;
+                                }
+
+                                .account-dropdown ul li {
+                                    padding: 10px 16px;
+                                    cursor: pointer;
+                                    transition: background-color 0.3s;
+                                }
+
+                                .account-dropdown ul li:hover {
+                                    background-color: #f5f5f5;
+                                }
+
+                                .header__top__right__auth a {
+                                    text-decoration: none;
+                                    color: #333;
+                                    padding: 10px 16px;
+                                    display: block;
+                                    font-size: 14px;
+                                }
+
+                                .header__top__right__auth a:hover {
+                                    background-color: #f5f5f5;
+                                    color: #e44d26;
+                                    transition: background-color 0.3s, color 0.3s;
+                                }
+                            </style>
+
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function () {
+                                    var trigger = document.getElementById("accountDropdownTrigger");
+                                    var dropdown = document.getElementById("accountDropdown");
+
+                                    trigger.addEventListener("click", function () {
+                                        dropdown.classList.toggle("show");
+                                    });
+
+                                    document.addEventListener("click", function (event) {
+                                        if (!event.target.matches("#accountDropdownTrigger") && !event.target.matches(".account-dropdown")) {
+                                            if (dropdown.classList.contains("show")) {
+                                                dropdown.classList.remove("show");
+                                            }
+                                        }
+                                    });
+                                });
+                            </script>
+
+
+
+
 
 
 
@@ -133,11 +206,12 @@ $buyer= Session::get('customer_user');
                 </div>
             </div>
         </div>
+        </div>
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="./index.php"><img src="img/1.png" alt="" ></a>
+                        <a href="./index.php"><img src="img/linh.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -145,18 +219,17 @@ $buyer= Session::get('customer_user');
                         <ul>
                             <li class="active"><a href="./index.php">Trang chủ</a></li>
                             <li><a href="./product.php">Sản phẩm</a></li>
-                            
-                            
-                            <?php 
-                                 $login = Session::get('customer_login');
-                                 if($login == false){
-                                   echo '';
-                                  }else
-                                  {
-                                     echo  '<li><a href="./profile.php">Thông tin </a></li>';
-                                     echo  '<li><a href="./bill.php">Đơn hàng</a></li>';
-                                   }
-                            ?>                         
+
+
+                            <?php
+                            $login = Session::get('customer_login');
+                            if ($login == false) {
+                                echo '';
+                            } else {
+                                echo '<li><a href="./profile.php">Thông tin </a></li>';
+                                echo '<li><a href="./bill.php">Đơn hàng</a></li>';
+                            }
+                            ?>
                         </ul>
                     </nav>
                 </div>
@@ -165,18 +238,20 @@ $buyer= Session::get('customer_user');
                         <ul>
                             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                             <li><a href="cart.php"><i class="fa fa-shopping-bag"></i> <span>
-                                <?php  
+                                        <?php
                                         $qtt = '0';
-                                        $qtt=Session::get("qtt");
+                                        $qtt = Session::get("qtt");
                                         echo $qtt;
-                                ?></span></a></li>
+                                        ?>
+                                    </span></a></li>
                         </ul>
                         <div class="header__cart__price">item: <span>
-                            <?php  
-                                        $a = '0';
-                                        $a=Session::get('total');
-                                        echo '$'.$fm->format_currency($a) ;
-                            ?></span></div>
+                                <?php
+                                $a = '0';
+                                $a = Session::get('total');
+                                echo '$' . $fm->format_currency($a);
+                                ?>
+                            </span></div>
                     </div>
                 </div>
             </div>
@@ -185,8 +260,3 @@ $buyer= Session::get('customer_user');
             </div>
         </div>
     </header>
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Bootstrap JS -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</body>

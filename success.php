@@ -29,7 +29,7 @@ include 'inc/header.php';
                 ?>
     <div class="blog__details__text">
         <center><h3>Chào <?php echo " " .$buyer ?>!</h3></center>
-        <center><h4>Cảm ơn bạn đã mua hàng tại SPORTS SHOP.</h4></center>
+        <center><h4>Cảm ơn bạn đã mua hàng tại LINH SHOP.</h4></center>
         <?php 
             }
         }
@@ -51,7 +51,7 @@ include 'inc/header.php';
         </h5>
         <h5 class="htest">Chân thành cảm ơn,</h5>
         <br>
-        <h5>Your Friends at SPORTS SHOP</h5>
+        <h5>Your Friends at LINH SHOP</h5>
         </center>
         
         
